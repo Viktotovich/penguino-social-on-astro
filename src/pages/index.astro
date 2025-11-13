@@ -1,10 +1,8 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import PublicLayout from "@/layouts/PublicLayout.astro";
 import Welcome from "@/sections/Welcome.astro";
-
-export const prerender = true;
 ---
 
-<Layout>
+<PublicLayout>
   <Welcome />
-</Layout>
+</PublicLayout>

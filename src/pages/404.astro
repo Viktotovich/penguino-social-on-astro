@@ -1,0 +1,39 @@
+---
+// Base Layout
+import PublicLayout from "@/layouts/PublicLayout.astro";
+
+//Components
+import Image from "astro/components/Image.astro";
+import { Link2Icon } from "lucide-react";
+
+export const prerender = false;
+---
+
+<PublicLayout>
+  <div class="relative min-h-screen py-18">
+    <Image
+      alt="not found"
+      src="https://res.cloudinary.com/dxryzhwxi/image/upload/v1762791675/404_c5xwm2.png"
+      height="768"
+      width="1366"
+      class="absolute -z-2 min-h-screen min-w-full object-cover"
+    />
+    <div
+      class="bg-primary-500/90 absolute top-[50%] flex w-full flex-col items-center justify-center gap-2 py-12 text-white"
+    >
+      <h2 class="text-center text-3xl md:text-4xl">Page Not Found</h2>
+      <p class="max-w-[65ch] text-center">
+        Through the voids of the unknown, the spaces made for the bold, and the
+        giant leaps of a user. This page yet remains to be created (or fixed)
+      </p>
+      <a
+        href="/"
+        class="flex justify-center text-2xl underline hover:cursor-pointer"
+      >
+        <div class="flex items-center gap-2">
+          Return Home <Link2Icon />
+        </div>
+      </a>
+    </div>
+  </div>
+</PublicLayout>

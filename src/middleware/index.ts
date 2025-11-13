@@ -21,6 +21,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (isAuthed) {
     context.locals.user = isAuthed.user;
     context.locals.session = isAuthed.session;
+    context.locals.contexturl = new URL(context.url);
   } else {
     context.locals.user = null;
     context.locals.session = null;
