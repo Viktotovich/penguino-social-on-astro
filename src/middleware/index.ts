@@ -25,6 +25,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   } else {
     context.locals.user = null;
     context.locals.session = null;
+    context.locals.contexturl = new URL(context.url);
   }
 
   return next();
