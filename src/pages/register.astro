@@ -1,0 +1,26 @@
+---
+//Layout
+import PublicLayout from "@/layouts/PublicLayout.astro";
+
+//Form
+import SignupForm from "@/components/forms/SignupForm";
+
+const { session, user } = Astro.locals;
+
+//If already logged in
+if (session && user) {
+  return Astro.redirect("/community");
+}
+---
+
+<PublicLayout>
+  <main class="px-6 pt-53 pb-32">
+    <div
+      class="flex min-h-svh flex-col items-center justify-center p-6 md:p-10"
+    >
+      <div class="w-full max-w-sm md:max-w-4xl">
+        <SignupForm client:load />
+      </div>
+    </div>
+  </main>
+</PublicLayout>

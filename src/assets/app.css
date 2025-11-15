@@ -3,6 +3,8 @@
 
 /*Upload Thing setup*/
 @import "uploadthing/tw/v4";
+/*---break---*/
+@custom-variant dark (&:is(.dark *));
 @source "../../node_modules/@uploadthing/react/dist";
 
 @theme inline {
