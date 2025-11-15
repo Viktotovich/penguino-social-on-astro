@@ -1,8 +1,18 @@
 ---
+//Layout
 import PublicLayout from "@/layouts/PublicLayout.astro";
-import Welcome from "@/sections/Welcome.astro";
+
+//Sections
+import Hero from "@/sections/homepage/Hero";
+import BlogPreview from "@/sections/homepage/BlogPreview";
 ---
 
 <PublicLayout>
-  <Welcome />
+  <main>
+    <Hero />
+    <div class="bg-primary-500 flex items-center justify-center py-24">
+      <p class="text-center text-white">Video here</p>
+    </div>
+    <BlogPreview />
+  </main>
 </PublicLayout>

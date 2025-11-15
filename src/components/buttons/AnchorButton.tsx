@@ -1,0 +1,17 @@
+type ButtonProps = {
+  href: string;
+  cta: string;
+  isPrimary: boolean;
+};
+
+//TODO: Button hover x active states
+export default function AnchorButton({ href, cta, isPrimary }: ButtonProps) {
+  return (
+    <a
+      href={href}
+      className={`border-border rounded-3xl border px-7 py-2 text-center text-base font-bold ${isPrimary && "bg-primary-500 text-white"}`}
+    >
+      {cta}
+    </a>
+  );
+}
