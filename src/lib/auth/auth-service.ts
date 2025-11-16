@@ -19,7 +19,6 @@ export default class AuthService {
       email,
       password,
       rememberMe,
-      callbackURL: "/dashboard",
     });
 
     return { data, error };
@@ -31,7 +30,6 @@ export default class AuthService {
       email,
       password,
       image: undefined,
-      callbackURL: "/dashboard",
     });
 
     return { data, error };

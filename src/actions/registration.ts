@@ -38,7 +38,7 @@ export const registerUser = defineAction({
     } catch (err) {
       throw new ActionError({
         code: "BAD_GATEWAY",
-        message: "Could not create an account, please try again!",
+        message: `Could not create an account. ${err}! please try again..`,
       });
     }
   },

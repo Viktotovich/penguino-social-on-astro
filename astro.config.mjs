@@ -20,4 +20,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: "server",
+  server: {
+    port: 3000,
+  },
 });

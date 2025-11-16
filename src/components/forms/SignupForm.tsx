@@ -13,6 +13,9 @@ import {
 } from "../generated/field";
 import { Input } from "../generated/input";
 
+//Types
+import type { SignUpFormState } from "@/actions/states/signup-state";
+
 // Popup + its caller
 import { Toaster } from "sonner";
 import { toast } from "sonner";
@@ -31,17 +34,7 @@ export default function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  type FormStateType = {
-    message?: string | null;
-    error?: {
-      name?: string;
-      email?: string;
-      password?: string;
-      confirm?: string;
-    } | null;
-  };
-
-  const initialState: FormStateType = {
+  const initialState: SignUpFormState = {
     message: null,
     error: null,
   };
@@ -49,17 +42,14 @@ export default function SignupForm({
   const [formState, setFormState] = useState(initialState);
 
   useEffect(() => {
-    console.log(formState);
     if (formState.message) {
       toast.success(formState.message);
+      window.location.href = "/dashboard";
     }
 
     if (formState.error) {
-      Object.values(formState.error).forEach((errMsg) => {
-        if (errMsg) {
-          toast.warning(errMsg);
-        }
-      });
+      toast.warning(formState.error.status);
+      toast.error(formState.error.message);
     }
   }, [formState]);
 
@@ -137,7 +127,9 @@ export default function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit" className="hover:cursor-pointer">
+                  Create Account
+                </Button>
               </Field>
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 Or continue with
@@ -149,6 +141,7 @@ export default function SignupForm({
                   onClick={() => {
                     auth.signInProvider("google");
                   }}
+                  className="hover:cursor-pointer"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g fill="none" fillRule="evenodd">
@@ -167,6 +160,7 @@ export default function SignupForm({
                   onClick={() => {
                     auth.signInProvider("reddit");
                   }}
+                  className="hover:cursor-pointer"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <mask id="SVGVbuWT6fy">
