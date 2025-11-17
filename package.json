@@ -6,7 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "penguino": "tsx ./bin/penguino-cli.ts",
+    "penguino scaffold:page": "tsx ./bin/penguino-cli.ts scaffold:page",
+    "penguino scaffold:component": "tsx ./bin/penguino-cli.ts scaffold:component",
+    "penguino scaffold:action": "tsx ./bin/penguino-cli.ts scaffold:action"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

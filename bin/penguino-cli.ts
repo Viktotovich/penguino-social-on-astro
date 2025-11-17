@@ -34,77 +34,49 @@ const program = new Command();
 program.name("penguino").description("Custom CLI for project scaffolding");
 
 program
-  .command("scaffold:base <name>")
-  .description("Scaffold a minimal Next.js page")
+  .command("scaffold:page <name>")
+  .description("Scaffold a minimal AstroJS page")
   .action((name) => createPage(name, baseTemplate(name)));
 
-program
-  .command("scaffold:full <name>")
-  .description(
-    "Scaffold a full-featured page with layout, metadata, page, loading, and error"
-  )
-  .action((name) => createUtilities(name, fullTemplate(name)));
-
+/* Disabled till CMS is ready
 program
   .command("scaffold:cms <name>")
   .description("Scaffold a CMS-connected page importing the Sanity client")
   .action((name) => createPage(name, cmsTemplate(name)));
+*/
 
 program
   .command("scaffold:component <name>")
   .description("Scaffold a React component in src/components")
   .action((name) => createComponent(name));
 
+program
+  .command("scaffold:action <name>")
+  .description(
+    "Scaffold an Astro action and have it added to src/action/index.ts"
+  )
+  .action((name) => createAction(name));
+
 program.parse(process.argv);
 
 // helpers
 
 function createPage(name: string, content: string) {
-  const pageDir = path.join(process.cwd(), "src/app", name);
-  const pageFile = path.join(pageDir, "page.tsx");
+  //get page name if nested with /
+  const pageFile = path.join(process.cwd(), "src/pages", `${name}.astro`);
 
   if (fs.existsSync(pageFile)) {
-    console.error(`Page ${name} already exists.`);
+    console.error(`${capitalizeName(name)} page already exists.`);
     process.exit(1);
   }
 
-  fs.mkdirSync(pageDir, { recursive: true });
+  fs.mkdirSync(path.dirname(pageFile), { recursive: true });
   fs.writeFileSync(pageFile, content);
-  console.log(`Created page at src/app/${name}/page.tsx`);
-}
-
-function createUtilities(name: string, content: string) {
-  const pageDir = path.join(process.cwd(), "src/app", name);
-
-  const pageFile = path.join(pageDir, "page.tsx");
-  const layoutFile = path.join(pageDir, `layout.tsx`);
-  const errorFile = path.join(pageDir, "error.tsx");
-  const loadingFile = path.join(pageDir, "loading.tsx");
-
-  if (
-    fs.existsSync(layoutFile) ||
-    fs.existsSync(errorFile) ||
-    fs.existsSync(loadingFile) ||
-    fs.existsSync(pageFile)
-  ) {
-    console.error("Full scaffold already exists in this directory. ", name);
-    process.exit(1);
-  }
-
-  fs.mkdirSync(pageDir, { recursive: true });
-
-  fs.writeFileSync(pageFile, content);
-  fs.writeFileSync(layoutFile, layoutTemplate());
-  fs.writeFileSync(errorFile, errorTemplate());
-  fs.writeFileSync(loadingFile, loadingTemplate(name));
-
-  console.log(
-    `Scaffolded page.tsx, loading.tsx, layout.tsx, and error.tsx files at src/app/${name}`
-  );
+  console.log(`Created page at src/pages/${name}.astro`);
 }
 
 function createComponent(name: string) {
-  const compDir = path.join(process.cwd(), "src/core/components");
+  const compDir = path.join(process.cwd(), "src/components");
   const file = path.join(compDir, `${name}.tsx`);
   if (fs.existsSync(file)) {
     console.error(`Component ${name} already exists.`);
@@ -112,39 +84,83 @@ function createComponent(name: string) {
   }
   fs.mkdirSync(compDir, { recursive: true });
   fs.writeFileSync(file, componentTemplate(name));
-  console.log(`Created component at src/core/components/${name}.tsx`);
+  console.log(`Created component at src/components/${name}.tsx`);
+}
+
+function createAction(name: string) {
+  const actDir = path.join(process.cwd(), "src/actions");
+  const fileName = `${name}.ts`;
+  const filePath = path.join(actDir, fileName);
+
+  if (fs.existsSync(filePath)) {
+    console.error(`Action ${name} already exists.`);
+    process.exit(1);
+  }
+
+  //Create the action
+  fs.writeFileSync(filePath, actionTemplate(name));
+  console.log(`STEP 1 COMPLETE: Created the action at src/actions/${fileName}`);
+
+  //Register it on the server export
+  const indexPath = path.join(actDir, "index.ts");
+  registerAction(name, indexPath);
+}
+
+function registerAction(name: string, indexPath: string) {
+  //read the content
+  let indexContent = fs.readFileSync(indexPath, "utf-8");
+
+  //Create the import name
+  const importName = toComponentName(name);
+
+  // Check if import already exists
+  if (!indexContent.includes(`import { ${importName} }`)) {
+    indexContent =
+      `import { ${importName} } from "./${name}";\n` + indexContent;
+  }
+
+  //I'll admit, I used GPT here. Regex is like Chinese written in Arabic
+  const serverMatch = indexContent.match(
+    /export const server\s*=\s*{([\s\S]*?)}/
+  );
+
+  if (serverMatch) {
+    let serverBody = serverMatch[1].trim();
+
+    if (!serverBody.includes(importName)) {
+      //prettify the space. If you don't have a comma use prettier
+      serverBody += `\n${importName}`;
+      indexContent = indexContent.replace(
+        /export const server\s*=\s*{([\s\S]*?)}/,
+        `export const server = {\n  ${serverBody}\n}`
+      );
+    }
+  } else {
+    console.log("Malformed server object, can't register on server object.");
+  }
+
+  fs.writeFileSync(indexPath, indexContent);
+  console.log(
+    `STEP 2 COMPLETE: Updated src/actions/index.ts with ${importName}`
+  );
 }
 
 // templates
 
 function baseTemplate(name: string) {
-  const comp = toComponentName(name);
-  return `export default function ${comp}Page() {
-  return <div>${name} page</div>;
-}
+  return `---
+  //Layout
+  import PublicLayout from "@/layouts/PublicLayout.astro";
+---
+    <PublicLayout>
+      <main>
+        <div>${name} page</div>;
+      </main>
+    </PublicLayout>
 `;
 }
 
-function fullTemplate(name: string) {
-  const comp = toComponentName(name);
-  return `import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "${comp}",
-  description: "${comp} page",
-};
-
-export default function ${comp}Page() {
-  return (
-    <main className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold">${comp}</h1>
-      <p>${name} page content.</p>
-    </main>
-  );
-}
-`;
-}
-
+/* Disabled until CMS is ready
 function cmsTemplate(name: string) {
   const comp = toComponentName(name);
   return `
@@ -162,6 +178,7 @@ function cmsTemplate(name: string) {
     }
     `;
 }
+*/
 
 function componentTemplate(name: string) {
   const comp = toComponentName(name);
@@ -172,79 +189,38 @@ function componentTemplate(name: string) {
 `;
 }
 
-function layoutTemplate() {
+function actionTemplate(name: string) {
+  const actionName = toComponentName(name);
   return `
-    import type { Metadata } from "next";
-    import "./globals.css";
-
-    export default function RootLayout({
-    children,
-    }: Readonly<{
-    children: React.ReactNode;
-    }>) {
-    return (
-        <html lang="en">
-        <body
-            className={"antialiased"}
-        >
-            {children}
-        </body>
-        </html>
-    );
-    }
-    `;
+    //Initiate Astro Action
+    import { defineAction, ActionError } from "astro:actions";
+    
+    //Validation
+    import { z } from "astro:schema";
+    
+    //Use Auth Service wrapper
+    import AuthService from "@/lib/auth/auth-service";
+    
+    const auth = new AuthService();
+    
+    export const ${actionName} = defineAction({
+      input: z.object({
+        //Define schema here
+      }),
+      handler: async () => {
+        //Define action here
+        },
+    });`;
 }
 
-function loadingTemplate(name: string) {
-  const comp = toComponentName(name);
-
-  return `
-        import ${comp}Skeleton from "@/app/ui/skeletons";
-
-        export default function Loading() {
-        return <${comp}Skeleton />;
-    }
-    `;
-}
-
-function errorTemplate() {
-  return `
-    "use client";
-
-    import { useEffect } from "react";
-
-    export default function Error({
-    error,
-    reset,
-    }: {
-    error: Error & { digest?: string };
-    reset: () => void;
-    }) {
-    useEffect(() => {
-        console.error(error);
-    }, [error]);
-
-    return (
-        <main className="flex h-full flex-col items-center justify-center">
-        <h2 className="text-center">Something went wrong!</h2>
-        <button
-            className=""
-            onClick={
-            // Attempt to recover by trying to re-render the invoices route
-            () => reset()
-            }
-        >
-            Try again
-        </button>
-        </main>
-    );
-    }
-    `;
-}
-
+//utils
 function toComponentName(name: string) {
   return name
     .split(/[-_\/]/)
-    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .map((p) => capitalizeName(p))
     .join("");
+}
+
+function capitalizeName(name: string) {
+  return name[0].toUpperCase() + name.slice(1);
 }
