@@ -45,43 +45,54 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Penguino design tokens. Guide: DESIGN-SYSTEM.md */
 :root {
-  --radius: 0.625rem;
-  --foreground: oklch(42.947% 0.07011 259.326 / 0.915);
+  --radius: 0.75rem;
+  --background: oklch(0.99 0.004 240);
+  --foreground: oklch(0.27 0.055 262);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.27 0.055 262);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.27 0.055 262);
+  --primary: oklch(0.27 0.055 262);
+  --primary-foreground: oklch(0.99 0.004 240);
+  --secondary: oklch(0.93 0.025 245);
+  --secondary-foreground: oklch(0.27 0.055 262);
+  --muted: oklch(0.96 0.01 245);
+  --muted-foreground: oklch(0.5 0.04 258);
+  --accent: oklch(0.74 0.16 58);
+  --accent-foreground: oklch(0.27 0.055 262);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.9 0.02 250);
+  --input: oklch(0.9 0.02 250);
+  --ring: oklch(0.6 0.12 255);
+  --chart-1: oklch(0.5 0.14 258);
+  --chart-2: oklch(0.74 0.16 58);
+  --chart-3: oklch(0.65 0.1 200);
+  --chart-4: oklch(0.55 0.15 300);
+  --chart-5: oklch(0.8 0.1 150);
+  --sidebar: oklch(0.99 0.004 240);
+  --sidebar-foreground: oklch(0.27 0.055 262);
+  --sidebar-primary: oklch(0.27 0.055 262);
+  --sidebar-primary-foreground: oklch(0.99 0.004 240);
+  --sidebar-accent: oklch(0.93 0.025 245);
+  --sidebar-accent-foreground: oklch(0.27 0.055 262);
+  --sidebar-border: oklch(0.9 0.02 250);
+  --sidebar-ring: oklch(0.6 0.12 255);
 }
 
 @theme {
-  --color-primary-500: rgb(14, 32, 87);
-  --color-primary-600: rgb(53, 13, 106);
+  /* Brand colours (DESIGN-SYSTEM.md). primary-500/600 stay for existing classes. */
+  --color-ink: oklch(0.27 0.055 262);
+  --color-tide: oklch(0.5 0.14 258);
+  --color-ice: oklch(0.93 0.025 245);
+  --color-snow: oklch(0.99 0.004 240);
+  --color-beak: oklch(0.74 0.16 58);
+  --color-aurora: oklch(0.55 0.15 300);
+  --color-primary-500: oklch(0.27 0.055 262);
+  --color-primary-600: oklch(0.55 0.15 300);
+  --font-display: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -90,7 +101,6 @@
   }
   body {
     @apply text-foreground;
-    background: oklch(1 0 346.11);
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Penguino">
+  <title>Penguino</title>
+  <g fill="none" stroke="#F4F8FD" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- flippers, crossed behind the head -->
+    <path d="M44 52 L14 30 L30 12 L58 36" fill="#3A5FA8"/>
+    <path d="M84 92 L112 108 L100 122 L72 104" fill="#3A5FA8"/>
+    <!-- head -->
+    <path d="M36 106 V60 a28 28 0 0 1 56 0 V82 L82 92 V106 Z" fill="#1B2A4A"/>
+    <!-- spiral eyes -->
+    <path d="M53 60 a3 3 0 1 1 -3 -3 a6 6 0 1 1 -6 6 a9 9 0 0 1 9 -9" stroke-width="4"/>
+    <path d="M75 60 a3 3 0 1 0 3 -3 a6 6 0 1 0 6 6 a9 9 0 0 0 -9 -9" stroke-width="4"/>
+  </g>
+  <!-- beak -->
+  <path d="M55 78 L73 78 L64 92 Z" fill="#F28C28" stroke="#F4F8FD" stroke-width="4" stroke-linejoin="round"/>
+</svg>
