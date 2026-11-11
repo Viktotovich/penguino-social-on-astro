@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 //Components
+import Logo from "@/components/brand/Logo";
 import NavLinkWithCB from "./NavLinkWithCB";
 import NavLink from "./NavLink";
 
@@ -20,11 +21,7 @@ export default function Header({ pathname }: { pathname: string }) {
   return (
     <header className="bg-primary-500 absolute z-1 w-full">
       <div className="flex items-center justify-between px-6 py-6 md:px-12 xl:px-24">
-        <a href="/">
-          <div className="text-xl font-bold text-white hover:cursor-pointer">
-            Logo
-          </div>
-        </a>
+        <Logo variant="dark" />
 
         {/* Desktop Navigation */}
         <nav className="hidden space-x-8 md:flex">
