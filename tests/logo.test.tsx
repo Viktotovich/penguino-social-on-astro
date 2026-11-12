@@ -16,7 +16,7 @@ describe("Logo", () => {
   });
 
   it("renders the {penguino} wordmark", () => {
-    expect(renderLogo()).toContain("penguino");
+    expect(renderLogo()).toContain("{penguino}");
   });
 
   it("uses the text-snow class for variant=dark", () => {
