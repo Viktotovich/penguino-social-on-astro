@@ -8,6 +8,7 @@ const links = [
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-ink text-snow px-6 py-12 md:px-12 xl:px-24">
       <div className="flex flex-col items-center gap-8">
@@ -24,7 +25,7 @@ export default function Footer() {
           ))}
         </nav>
         <p className="text-sm text-snow/60">
-          © {new Date().getFullYear()} Penguino. Open source.
+          © {year} Penguino. Open source.
         </p>
       </div>
     </footer>
