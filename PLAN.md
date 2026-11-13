@@ -25,6 +25,7 @@ reviewed, and merged into `main`. Design rules: [DESIGN-SYSTEM.md](DESIGN-SYSTEM
 | 0.3.2 | `03-readme.md` | README: how the app is built, design system link |
 | 0.4.0 | `04-footer.md` | Site footer |
 | 0.8.0 | `05b-about.md` | `/about` page (05 failed; rerun after 07). Versions after this move up one minor. |
+| 0.8.1 | `08-spacing-and-mobile.md` | 8-point spacing grid, phone layouts, footer kept at the bottom |
 
 ## Phase 2: accounts (0.6 to 0.8)
 

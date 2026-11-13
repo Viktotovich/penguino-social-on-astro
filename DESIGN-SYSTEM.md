@@ -47,15 +47,43 @@ Text on Ink is Snow; text on Beak, Ice and Snow is Ink. Each of these pairs meet
 ## Shape, space and motion
 
 - Radius: `rounded-lg` (0.75rem) for cards and inputs, `rounded-full` for buttons, badges and avatars.
-- Spacing follows Tailwind's 4px scale. Sections use `py-16 md:py-24`, page sides use `px-6 md:px-12 xl:px-24`
-  (the header's own padding).
+- Spacing follows the **8-point grid** below.
 - Shadows: `shadow-sm` at rest, `shadow-md` on hover, nothing heavier.
 - Motion: 150–200ms ease-out for hovers and menus. Respect `prefers-reduced-motion`: no movement, only fades.
+
+## Spacing: the 8-point grid
+
+Every margin, padding, gap and fixed size is a multiple of 8px. In Tailwind (1 step = 4px) that means **even
+steps only**: `2` (8px), `4` (16), `6` (24), `8` (32), `10` (40), `12` (48), `16` (64), `20` (80), `24` (96),
+`32` (128), `40` (160). Odd steps (`1`, `3`, `5`, `7`, ...) and arbitrary values (`pt-53`, `p-[13px]`) are not
+allowed, with one exception: step `1` (4px) for the gap between an icon and its text.
+
+| Token | Classes | Use |
+| --- | --- | --- |
+| Page sides | `px-6 md:px-12 xl:px-24` | Every full-width block: header, sections, footer |
+| Below the header | `pt-32 md:pt-40` | First block of every page (the header is absolute, 96px tall) |
+| Section | `py-16 md:py-24` | Vertical padding of a page section; also the bottom of the last one |
+| Stack, tight | `gap-2` | Label and field, heading and its subtitle |
+| Stack | `gap-4` | Paragraphs, form fields, a row of buttons |
+| Group | `gap-8` | Between groups inside a section |
+| Card | `p-6 md:p-8` | Inside cards and forms |
+| Control height | `h-12` | Buttons and inputs (48px, also the minimum touch target) |
+
+Headings take their space from the stack they are in, not from their own margins: no `mb-*` or `pb-*` on text.
+
+## Mobile
+
+- Design for 360px wide first, then add `md:` (768px) and `xl:` (1280px). Nothing may scroll sideways at 360px.
+- Rows of buttons stack on phones: `flex flex-col gap-4 sm:flex-row`, and stacked buttons are full width
+  (`w-full sm:w-auto`).
+- Page headings: `text-3xl md:text-5xl`. Body text is `text-base`, never smaller than `text-sm`.
+- Every tap target (buttons, menu links, the menu toggle) is at least 48px tall: `h-12` with `items-center`.
+- Two-column layouts become one column below `md:`.
 
 ## Components
 
 - **Buttons**: primary is Ink with Snow text; secondary is Ice with Ink text; the one call to action that matters
-  most on a screen may use Beak. All are `rounded-full`, `px-6 py-3`, `font-semibold`.
+  most on a screen may use Beak. All are `rounded-full`, `inline-flex h-12 items-center justify-center px-6`, `font-semibold`.
 - **Cards**: white, `rounded-lg`, `border border-border`, `shadow-sm`, padding `p-6`.
 - **Inputs**: `rounded-lg`, `border-input`, a 2px Tide ring on focus, the label above the field.
 - **Links**: Tide, underlined on hover.
