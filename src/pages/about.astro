@@ -1,0 +1,26 @@
+---
+//Layout
+import PublicLayout from "@/layouts/PublicLayout.astro";
+
+//Components
+import AnchorButton from "@/components/buttons/AnchorButton";
+---
+
+<PublicLayout>
+  <main class="px-6 pt-40 pb-24 md:px-12 xl:px-24">
+    <h1 class="font-display text-4xl font-extrabold text-ink md:text-5xl">What is Penguino?</h1>
+    <p class="max-w-[65ch] text-muted-foreground">
+      Penguino is a free community platform for entrepreneurs to connect, ask for advice and find partners.
+    </p>
+    <p class="max-w-[65ch] text-muted-foreground">
+      It is for members of the Penguino Telegram community and anyone building a business.
+    </p>
+    <p class="max-w-[65ch] text-muted-foreground">
+      It is open source and built in the open.
+    </p>
+    <div class="flex gap-4">
+      <AnchorButton href="/register" cta="Join now" isPrimary={true} />
+      <AnchorButton href="/community" cta="See the community" isPrimary={false} />
+    </div>
+  </main>
+</PublicLayout>
