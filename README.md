@@ -14,6 +14,7 @@ Penguino uses [TailwindCSS](https://tailwindcss.com/) for styling. The logo file
 
 - `logo-mark.svg` - the primary logo mark (light background)
 - `logo-mark-inverse.svg` - the primary logo mark (dark background)
+- `public/favicon.svg` - the browser tab icon (same as the mark)
 
 ## How Penguino is built
 
@@ -77,5 +78,3 @@ CI/CD pipelines and testing will come later
 - Refer to BACKLOG.md
 
 #### Usage
-
-=======
