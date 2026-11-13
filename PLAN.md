@@ -24,7 +24,7 @@ reviewed, and merged into `main`. Design rules: [DESIGN-SYSTEM.md](DESIGN-SYSTEM
 | 0.3.1 | `02b-hero-fixes.md` | Hero centring and formatting fixes from 02 |
 | 0.3.2 | `03-readme.md` | README: how the app is built, design system link |
 | 0.4.0 | `04-footer.md` | Site footer |
-| 0.5.0 | `05-about.md` | `/about` page |
+| 0.8.0 | `05b-about.md` | `/about` page (05 failed; rerun after 07). Versions after this move up one minor. |
 
 ## Phase 2: accounts (0.6 to 0.8)
 
