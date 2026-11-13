@@ -22,7 +22,7 @@ const url = Astro.locals.contexturl;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased bg-snow font-sans relative">
-    <Header pathname={url.pathname} client:load />
+    <Header pathname={url.pathname} user={Astro.locals.user ? { name: Astro.locals.user.name, image: Astro.locals.user.image } : null} client:load />
     <main>
       <slot />
     </main>

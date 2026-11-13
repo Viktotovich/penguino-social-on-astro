@@ -7,15 +7,22 @@ import { Menu, X } from "lucide-react";
 import Logo from "@/components/brand/Logo";
 import NavLinkWithCB from "./NavLinkWithCB";
 import NavLink from "./NavLink";
+import AuthService from "@/lib/auth/auth-service";
 
-export default function Header({ pathname }: { pathname: string }) {
+export default function Header({
+  pathname,
+  user,
+}: {
+  pathname: string;
+  user: { name: string; image?: string | null } | null;
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
     { label: "Penguino?", href: "/about" },
     { label: "Resources", href: "/resources" },
     { label: "Community", href: "/community" },
-    { label: "Join now", href: "/register" },
   ];
 
   return (
@@ -25,12 +32,69 @@ export default function Header({ pathname }: { pathname: string }) {
 
         {/* Desktop Navigation */}
         <nav className="hidden space-x-8 md:flex">
-          {links.map((link) => (
-            <NavLink href={link.href} key={link.label} pathname={pathname}>
-              {link.label}
-            </NavLink>
-          ))}
+          {user ? (
+            links.map((link) => (
+              <NavLink href={link.href} key={link.label} pathname={pathname}>
+                {link.label}
+              </NavLink>
+            ))
+          ) : (
+            <>
+              {links.map((link) => (
+                <NavLink href={link.href} key={link.label} pathname={pathname}>
+                  {link.label}
+                </NavLink>
+              ))}
+              <NavLink href="/login" pathname={pathname}>
+                Log in
+              </NavLink>
+              <NavLink href="/register" pathname={pathname}>
+                Join now
+              </NavLink>
+            </>
+          )}
         </nav>
+
+        {/* Account Menu Button */}
+        {user && (
+          <div className="relative">
+            <button
+              className="rounded-full size-9 hover:cursor-pointer hover:bg-white/20"
+              aria-label="Account menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {user.image ? (
+                <img
+                  src={user.image}
+                  alt=""
+                  className="rounded-full size-9"
+                />
+              ) : (
+                <span className="rounded-full size-9 bg-ice text-ink font-semibold">
+                  {user.name.charAt(0).toUpperCase()}
+                </span>
+              )}
+            </button>
+            {menuOpen && (
+              <div className="absolute right-6 mt-2 rounded-lg bg-snow p-2 shadow-md">
+                <p className="text-ink font-semibold">
+                  {user.name.charAt(0).toUpperCase()}
+                  {user.name.slice(1)}
+                </p>
+                <button
+                  className="text-primary-500 font-semibold hover:underline"
+                  onClick={async () => {
+                    await new AuthService().signOut();
+                    window.location.href = "/";
+                  }}
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Hamburger */}
         <button
@@ -60,6 +124,17 @@ export default function Header({ pathname }: { pathname: string }) {
               {link.label}
             </NavLinkWithCB>
           ))}
+          {user && (
+            <NavLinkWithCB
+              href="/"
+              pathname={pathname}
+              cb={() => {
+                setMobileOpen(false);
+              }}
+            >
+              Sign out
+            </NavLinkWithCB>
+          )}
         </nav>
       )}
     </header>
