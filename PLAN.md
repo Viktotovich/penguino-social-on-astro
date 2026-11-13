@@ -21,7 +21,8 @@ reviewed, and merged into `main`. Design rules: [DESIGN-SYSTEM.md](DESIGN-SYSTEM
 | 0.1.1 | (done by hand) | Test and check tooling: vitest, astro check |
 | 0.2.0 | `01-logo.md` | `Logo` component, used in the header |
 | 0.3.0 | `02-fonts-and-hero.md` | Brand fonts and a restyled hero |
-| 0.3.1 | `03-readme.md` | README: how the app is built, design system link |
+| 0.3.1 | `02b-hero-fixes.md` | Hero centring and formatting fixes from 02 |
+| 0.3.2 | `03-readme.md` | README: how the app is built, design system link |
 | 0.4.0 | `04-footer.md` | Site footer |
 | 0.5.0 | `05-about.md` | `/about` page |
 
@@ -29,8 +30,8 @@ reviewed, and merged into `main`. Design rules: [DESIGN-SYSTEM.md](DESIGN-SYSTEM
 
 | Version | What |
 | --- | --- |
-| 0.6.0 | Login page with email and Google sign-in (better-auth), matching the signup form |
-| 0.7.0 | Session-aware header: avatar menu and sign-out |
+| 0.6.0 | `06-login.md`: Login page with email and Google sign-in (better-auth), matching the signup form |
+| 0.7.0 | `07-session-header.md`: Session-aware header: avatar menu and sign-out |
 | 0.8.0 | Roles (member, moderator, admin) in the Prisma schema, and middleware that guards pages by role |
 
 ## Phase 3: community (0.9 to 0.12)

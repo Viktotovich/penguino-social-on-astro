@@ -11,4 +11,4 @@ Update `README.md` for how Penguino is now built.
   since the app uses Astro.
 - Add a `## Design` section after `# Goals` linking DESIGN-SYSTEM.md and naming the logo files in
   `src/assets/brand/`.
-- Bump `version` in `package.json` to `0.3.1`.
+- Bump `version` in `package.json` to `0.3.2`.
