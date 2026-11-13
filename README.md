@@ -3,21 +3,29 @@
 Penguino is an open-source web app I am planning to build for one of the entrepreneurial groups/community that I am a part of.
 
 It is a way to say thanks and give back to the amazing community that they have built over the course of a few weeks, additionally - this project
-will be the first time that I will be using NextJS in production - as my go to stack for the past 12/13 projects is strictly Inertia Adonis React, or Astro and React.
+will be the first time that I will be using Astro and React in production - as my go to stack for the past 12/13 projects is strictly Inertia Adonis React, or Astro and React.
 
 It is both meant to be a fun app to interact with while still being useful, and also a great learning resource for junior developers to see what a fullstack application
 could look like (avoiding the word should, as I am a human, and I make mistakes).
 
-## Pull Requests
+## Design
 
-I strictly do not use nor trust, AI development plugins for multitudes of reasons that I will not mention here - and seldom use AI. So my request to the person reading this
-that is looking to send an AI generated PR: please abstain from doing do. You can still be a x5 developer without AI, and I would rather have the application
-burn with a human made error, than one induced by an LLM.
+Penguino uses [TailwindCSS](https://tailwindcss.com/) for styling. The logo files are in `src/assets/brand/`:
 
-Once the project architecture is planned out in my head, and maybe around the Beta prod version - I will write a comprehensive PR ruleset to standardize and streamline PRs, for
-now - all changes are welcome, just again, abstain from using AI for anything but debugging and grammar, keep PRs simple and descriptive.
+- `logo-mark.svg` - the primary logo mark (light background)
+- `logo-mark-inverse.svg` - the primary logo mark (dark background)
 
-Also, be careful with dependency version bumps - there may or may not be breaking changes.
+## How Penguino is built
+
+Penguino is built with [vb-harness](https://github.com/Viktotovich/vb-harness-for-agentic-building), a harness
+that lets a local model plan, write, test and review small changes. It is a showcase for the harness's agent
+mode.
+
+Each change starts as a request in `docs/requests/`, and `PLAN.md` lists the order and versions.
+
+Commits follow Conventional Commits, and versions follow semver: `0.x` is pre-release, `1.0.0` the first release.
+
+Pull requests are welcome; keep them small and descriptive, and follow [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) for anything visual.
 
 ### To start
 
