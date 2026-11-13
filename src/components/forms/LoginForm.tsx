@@ -56,7 +56,7 @@ export default function LoginForm() {
           >
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-display font-extrabold text-ink">
+                <h1 className="font-display text-2xl font-extrabold text-ink">
                   Welcome back
                 </h1>
               </div>
