@@ -5,7 +5,7 @@ import AnchorButton from "@/components/buttons/AnchorButton";
 export default function Hero() {
   return (
     <section className="flex flex-col items-center px-6 pt-53 pb-32">
-      <h1 className="max-w-[25ch] pb-4 font-display font-extrabold text-ink text-4xl md:text-5xl">
+      <h1 className="max-w-[25ch] pb-4 font-display font-extrabold text-center text-ink text-4xl md:text-5xl">
         The last entrepreneurial platform you would ever need.{" "}
         <span className="bg-linear-to-r from-tide to-aurora bg-[length:100%_3px] bg-bottom bg-no-repeat">
           FREE
