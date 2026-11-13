@@ -3,9 +3,11 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import AnchorButton from "@/components/buttons/AnchorButton";
 
-function renderButton(
-  options: { href: string; cta: string; isPrimary: boolean },
-) {
+function renderButton(options: {
+  href: string;
+  cta: string;
+  isPrimary: boolean;
+}) {
   return renderToStaticMarkup(createElement(AnchorButton, options));
 }
 

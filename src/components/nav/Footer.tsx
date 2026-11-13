@@ -4,7 +4,10 @@ const links = [
   { label: "Penguino?", href: "/about" },
   { label: "Resources", href: "/resources" },
   { label: "Community", href: "/community" },
-  { label: "GitHub", href: "https://github.com/Viktotovich/penguino-social-on-astro" },
+  {
+    label: "GitHub",
+    href: "https://github.com/Viktotovich/penguino-social-on-astro",
+  },
 ];
 
 export default function Footer() {
@@ -24,9 +27,7 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-        <p className="text-sm text-snow/60">
-          © {year} Penguino. Open source.
-        </p>
+        <p className="text-sm text-snow/60">© {year} Penguino. Open source.</p>
       </div>
     </footer>
   );

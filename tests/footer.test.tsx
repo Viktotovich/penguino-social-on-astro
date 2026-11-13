@@ -9,7 +9,9 @@ describe("Footer", () => {
     expect(html).toContain('<a href="/about"');
     expect(html).toContain('<a href="/resources"');
     expect(html).toContain('<a href="/community"');
-    expect(html).toContain('<a href="https://github.com/Viktotovich/penguino-social-on-astro"');
+    expect(html).toContain(
+      '<a href="https://github.com/Viktotovich/penguino-social-on-astro"',
+    );
     expect(html).toMatch(/© \d{4} Penguino\. Open source\./);
   });
 });

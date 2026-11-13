@@ -65,11 +65,7 @@ export default function Header({
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {user.image ? (
-                <img
-                  src={user.image}
-                  alt=""
-                  className="rounded-full size-9"
-                />
+                <img src={user.image} alt="" className="rounded-full size-9" />
               ) : (
                 <span className="rounded-full size-9 bg-ice text-ink font-semibold">
                   {user.name.charAt(0).toUpperCase()}
