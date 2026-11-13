@@ -4,12 +4,14 @@ type ButtonProps = {
   isPrimary: boolean;
 };
 
-//TODO: Button hover x active states
 export default function AnchorButton({ href, cta, isPrimary }: ButtonProps) {
+  const baseClasses = "rounded-full px-6 py-3 font-semibold transition-shadow duration-200 hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring";
+  const primaryClasses = "bg-ink text-snow";
+  const secondaryClasses = "bg-ice text-ink";
   return (
     <a
       href={href}
-      className={`border-border rounded-3xl border px-7 py-2 text-center text-base font-bold ${isPrimary && "bg-primary-500 text-white"}`}
+      className={`${baseClasses} ${isPrimary ? primaryClasses : secondaryClasses}`}
     >
       {cta}
     </a>

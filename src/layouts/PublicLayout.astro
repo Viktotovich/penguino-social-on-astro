@@ -16,8 +16,11 @@ const url = Astro.locals.contexturl;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Penguino Social</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet" />
   </head>
-  <body class="antialised relative">
+  <body class="antialiased bg-snow font-sans relative">
     <Header pathname={url.pathname} client:load />
     <main>
       <slot />

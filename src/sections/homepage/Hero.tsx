@@ -5,13 +5,13 @@ import AnchorButton from "@/components/buttons/AnchorButton";
 export default function Hero() {
   return (
     <section className="flex flex-col items-center px-6 pt-53 pb-32">
-      <h1 className="max-w-[25ch] pb-4 text-center text-3xl text-black md:text-4xl">
-        The last entrepenurial platform you would ever need.{" "}
-        <span className="bg-linear-to-r from-purple-500 to-blue-500 bg-[length:100%_3px] bg-bottom bg-no-repeat">
+      <h1 className="max-w-[25ch] pb-4 font-display font-extrabold text-ink text-4xl md:text-5xl">
+        The last entrepreneurial platform you would ever need.{" "}
+        <span className="bg-linear-to-r from-tide to-aurora bg-[length:100%_3px] bg-bottom bg-no-repeat">
           FREE
         </span>
       </h1>
-      <p className="mb-8 max-w-[55ch] text-center text-sm md:text-base">
+      <p className="mb-8 max-w-[55ch] text-center text-sm md:text-base text-muted-foreground">
         Penguino is the place to build long lasting connections with likeminded
         individuals, get advice, and build life-long partnerships
       </p>
