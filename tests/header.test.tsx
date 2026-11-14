@@ -31,4 +31,9 @@ describe("Header", () => {
     const html = renderHeader({ pathname: "/", user: null });
     expect(html.split('href="/about"').length - 1).toBe(1);
   });
+
+  it("renders no mobile nav when closed", () => {
+    const html = renderHeader({ pathname: "/", user: null });
+    expect(html).not.toContain("pb-4");
+  });
 });
