@@ -12,4 +12,9 @@ describe("LoginForm", () => {
     expect(html).toContain("Continue with Google");
     expect(html).toContain('href="/register"');
   });
+
+  it("email and password inputs and buttons have h-12 class", () => {
+    const html = renderToStaticMarkup(createElement(LoginForm));
+    expect(html).toContain("h-12");
+  });
 });

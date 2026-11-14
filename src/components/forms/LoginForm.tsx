@@ -97,7 +97,7 @@ export default function LoginForm() {
               <Field>
                 <Button
                   type="submit"
-                  className="hover:cursor-pointer h-12"
+                  className="h-12"
                   disabled={isLoading}
                 >
                   Log in
@@ -113,7 +113,7 @@ export default function LoginForm() {
                   onClick={() => {
                     auth.signInProvider("google");
                   }}
-                  className="hover:cursor-pointer h-12"
+                  className="h-12"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g fill="none" fillRule="evenodd">
