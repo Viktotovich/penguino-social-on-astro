@@ -94,7 +94,7 @@ export default function Header({
 
         {/* Hamburger */}
         <button
-          className="rounded hover:cursor-pointer hover:bg-white md:hidden"
+          className="size-12 inline-flex items-center justify-center rounded hover:cursor-pointer hover:bg-white md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? (

@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="bg-ink text-snow px-6 py-12 md:px-12 xl:px-24">
       <div className="flex flex-col items-center gap-8">
         <Logo variant="dark" />
-        <nav aria-label="Footer" className="flex gap-6">
+        <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-8 gap-y-4">
           {links.map((link) => (
             <a
               key={link.label}

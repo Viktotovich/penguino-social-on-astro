@@ -7,8 +7,8 @@ import AnchorButton from "@/components/buttons/AnchorButton";
 ---
 
 <PublicLayout>
-  <main class="px-6 pt-40 pb-24 md:px-12 xl:px-24">
-    <h1 class="font-display text-4xl font-extrabold text-ink md:text-5xl">What is Penguino?</h1>
+  <main class="flex flex-col gap-4 px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 xl:px-24">
+    <h1 class="font-display text-3xl font-extrabold text-ink md:text-5xl">What is Penguino?</h1>
     <p class="max-w-[65ch] text-muted-foreground">
       Penguino is a free community platform for entrepreneurs to connect, ask for advice and find partners.
     </p>
@@ -18,7 +18,7 @@ import AnchorButton from "@/components/buttons/AnchorButton";
     <p class="max-w-[65ch] text-muted-foreground">
       It is open source and built in the open.
     </p>
-    <div class="flex gap-4">
+    <div class="flex flex-col gap-4 sm:flex-row">
       <AnchorButton href="/register" cta="Join now" isPrimary={true} />
       <AnchorButton href="/community" cta="See the community" isPrimary={false} />
     </div>
