@@ -117,7 +117,7 @@ export default function Header({
                 setMobileOpen(false);
               }}
             >
-              {link.label}
+              <span className="flex h-12 items-center">{link.label}</span>
             </NavLinkWithCB>
           ))}
           {user && (
