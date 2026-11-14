@@ -4,7 +4,7 @@ import AnchorButton from "@/components/buttons/AnchorButton";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 xl:px-24">
+    <section className="flex flex-col items-center gap-4 px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 xl:px-24">
       <h1 className="max-w-[25ch] font-display font-extrabold text-center text-ink text-3xl md:text-5xl">
         The last entrepreneurial platform you would ever need.{" "}
         <span className="bg-linear-to-r from-tide to-aurora bg-[length:100%_3px] bg-bottom bg-no-repeat">
@@ -16,7 +16,7 @@ export default function Hero() {
         individuals, get advice, and build life-long partnerships
       </p>
 
-      <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
+      <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row mt-4">
         <AnchorButton cta="Join Now" href="/register" isPrimary={true} />
         <AnchorButton
           cta="See the community"

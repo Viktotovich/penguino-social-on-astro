@@ -107,30 +107,34 @@ export default function Header({
 
       {/* Mobile Menu */}
       <nav className="h-full space-y-2 px-6 pb-4 md:hidden">
-        {links.map((link) => (
-          <NavLinkWithCB
-            key={link.href}
-            href={link.href}
-            pathname={pathname}
-            cb={() => {
-              setMobileOpen(false);
-            }}
-            className="flex h-12 items-center"
-          >
-            <span className="flex h-12 items-center">{link.label}</span>
-          </NavLinkWithCB>
-        ))}
-        {user && (
-          <NavLinkWithCB
-            href="/"
-            pathname={pathname}
-            cb={() => {
-              setMobileOpen(false);
-            }}
-            className="flex h-12 items-center"
-          >
-            Sign out
-          </NavLinkWithCB>
+        {mobileOpen && (
+          <>
+            {links.map((link) => (
+              <NavLinkWithCB
+                key={link.href}
+                href={link.href}
+                pathname={pathname}
+                cb={() => {
+                  setMobileOpen(false);
+                }}
+                className="flex h-12 items-center"
+              >
+                {link.label}
+              </NavLinkWithCB>
+            ))}
+            {user && (
+              <NavLinkWithCB
+                href="/"
+                pathname={pathname}
+                cb={() => {
+                  setMobileOpen(false);
+                }}
+                className="flex h-12 items-center"
+              >
+                Sign out
+              </NavLinkWithCB>
+            )}
+          </>
         )}
       </nav>
     </header>
