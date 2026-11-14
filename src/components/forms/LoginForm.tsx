@@ -50,12 +50,12 @@ export default function LoginForm() {
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form
-            className="p-8 md:p-8"
+            className="p-6 md:p-8"
             onSubmit={submitForm}
             aria-label="Login form"
           >
             <FieldGroup>
-              <div className="flex flex-col items-center gap-4 text-center">
+              <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="font-display text-2xl font-extrabold text-ink">
                   Welcome back
                 </h1>
