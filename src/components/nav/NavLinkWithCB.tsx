@@ -6,6 +6,7 @@ type NavLinkProps = {
   href: string;
   children: React.ReactNode;
   cb: () => void;
+  className?: string;
 };
 
 export default function NavLinkWithCB({
@@ -13,6 +14,7 @@ export default function NavLinkWithCB({
   href,
   children,
   cb,
+  className,
 }: NavLinkProps) {
   return (
     <>
@@ -20,7 +22,8 @@ export default function NavLinkWithCB({
         href={href}
         className={cn(
           "block w-full py-2 text-white",
-          pathname === href && "underline"
+          pathname === href && "underline",
+          className
         )}
         onClick={cb}
       >

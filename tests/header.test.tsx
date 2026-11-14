@@ -26,4 +26,11 @@ describe("Header", () => {
     expect(html).toContain("A");
     expect(html).not.toContain('href="/register"');
   });
+
+  it("mobile menu links have flex h-12 items-center classes", () => {
+    const html = renderHeader({ pathname: "/", user: null });
+    expect(html).toContain("flex");
+    expect(html).toContain("h-12");
+    expect(html).toContain("items-center");
+  });
 });
