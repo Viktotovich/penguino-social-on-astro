@@ -14,4 +14,11 @@ describe("Footer", () => {
     );
     expect(html).toMatch(/© \d{4} Penguino\. Open source\./);
   });
+
+  it("renders nav with flex wrap classes", () => {
+    const html = renderToStaticMarkup(<Footer />);
+    expect(html).toContain(
+      'class="flex flex-wrap justify-center gap-x-8 gap-y-4"',
+    );
+  });
 });
