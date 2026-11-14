@@ -106,37 +106,35 @@ export default function Header({
       </div>
 
       {/* Mobile Menu */}
-      <nav className="h-full space-y-2 px-6 pb-4 md:hidden">
-        {mobileOpen && (
-          <>
-            {links.map((link) => (
-              <NavLinkWithCB
-                key={link.href}
-                href={link.href}
-                pathname={pathname}
-                cb={() => {
-                  setMobileOpen(false);
-                }}
-                className="flex h-12 items-center"
-              >
-                {link.label}
-              </NavLinkWithCB>
-            ))}
-            {user && (
-              <NavLinkWithCB
-                href="/"
-                pathname={pathname}
-                cb={() => {
-                  setMobileOpen(false);
-                }}
-                className="flex h-12 items-center"
-              >
-                Sign out
-              </NavLinkWithCB>
-            )}
-          </>
-        )}
-      </nav>
+      {mobileOpen && (
+        <nav className="h-full space-y-2 px-6 pb-4 md:hidden">
+          {links.map((link) => (
+            <NavLinkWithCB
+              key={link.href}
+              href={link.href}
+              pathname={pathname}
+              cb={() => {
+                setMobileOpen(false);
+              }}
+              className="flex h-12 items-center"
+            >
+              {link.label}
+            </NavLinkWithCB>
+          ))}
+          {user && (
+            <NavLinkWithCB
+              href="/"
+              pathname={pathname}
+              cb={() => {
+                setMobileOpen(false);
+              }}
+              className="flex h-12 items-center"
+            >
+              Sign out
+            </NavLinkWithCB>
+          )}
+        </nav>
+      )}
     </header>
   );
 }
