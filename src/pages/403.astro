@@ -1,16 +1,19 @@
 ---
+//Layout
 import PublicLayout from "@/layouts/PublicLayout.astro";
+
+//Components
 import AnchorButton from "@/components/buttons/AnchorButton";
 ---
 
 <PublicLayout>
-    <main class="flex flex-col gap-4 px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 xl:px-24">
-        <h1 class="font-display text-3xl font-extrabold text-ink md:text-5xl">You can't open this page</h1>
-        <p class="max-w-[65ch] text-muted-foreground">
-            Your account doesn't have access to it.
-        </p>
-        <div class="mt-4 flex flex-col gap-4 sm:flex-row">
-            <AnchorButton href="/" cta="Back to home" isPrimary={true} />
-        </div>
-    </main>
+  <main class="flex flex-col gap-4 px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 xl:px-24">
+    <h1 class="font-display text-3xl font-extrabold text-ink md:text-5xl">You can't open this page</h1>
+    <p class="max-w-[65ch] text-muted-foreground">
+      Your account doesn't have access to it.
+    </p>
+    <div class="mt-4 flex flex-col gap-4 sm:flex-row">
+      <AnchorButton href="/" cta="Back to home" isPrimary={true} />
+    </div>
+  </main>
 </PublicLayout>
