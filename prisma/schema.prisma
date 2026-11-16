@@ -68,7 +68,7 @@ model verification {
 
 /// Comments x Posts x Resources
 model post {
-  id        String        @id
+  id        String        @id @default(cuid())
   hidden    Boolean       @default(false)
   title     String
   body      String
@@ -77,15 +77,15 @@ model post {
   comments  postComment[]
   author    user          @relation(fields: [authorId], references: [id])
   createdAt DateTime      @default(now())
-  updatedAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   authorId  String
   resources resource[]
 }
 
 model postLike {
-  id        String   @id
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   post      post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
   postId    String
@@ -95,11 +95,11 @@ model postLike {
 }
 
 model postComment {
-  id        String   @id
+  id        String   @id @default(cuid())
   body      String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  post      post     @relation(fields: [postId], references: [id])
+  updatedAt DateTime @updatedAt
+  post      post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   user      user     @relation(fields: [userId], references: [id])
   userId    String
   postId    String
