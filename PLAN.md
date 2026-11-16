@@ -35,14 +35,17 @@ reviewed, and merged into `main`. Design rules: [DESIGN-SYSTEM.md](DESIGN-SYSTEM
 | 0.7.0 | `07-session-header.md`: Session-aware header: avatar menu and sign-out |
 | 0.9.0 | `09-roles.md`: role on the session, middleware that guards pages by role, a 403 page |
 
-## Phase 3: community (0.9 to 0.12)
+## Phase 3: community (0.10 to 0.13)
+
+The `post`, `postLike` and `postComment` models were already in the schema; 10 fixes their ids and cascades. The SQL
+migration needs a real database and is made outside the harness.
 
 | Version | What |
 | --- | --- |
-| 0.9.0 | `Post` and `Comment` models, with a migration |
-| 0.10.0 | Paginated feed API (offset and limit, no N+1 queries) and the `/community` feed with "load more" |
-| 0.11.0 | Create, edit and delete your own posts and comments |
-| 0.12.0 | Moderator and admin tools: edit or remove any post or comment |
+| 0.10.0 | `10-posts-feed-api.md`: model fixes, pagination helper, one-query feed (no N+1), `GET /api/posts` |
+| 0.11.0 | The `/community` feed page with "load more" |
+| 0.12.0 | Create, edit and delete your own posts and comments |
+| 0.13.0 | Moderator and admin tools: edit or remove any post or comment |
 
 ## Phase 4: polish and release (0.13 to 1.0)
 
