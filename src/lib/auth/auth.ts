@@ -20,6 +20,11 @@ export const auth = betterAuth({
     requireEmailVerification: false,
     //sendResetPassword << TODO
   },
+  user: {
+    additionalFields: {
+      role: { type: "string", defaultValue: "USER", input: false },
+    },
+  },
   // TODO: Verify email callback
   // https://www.better-auth.com/docs/authentication/email-password
   socialProviders: {
