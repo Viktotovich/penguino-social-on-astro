@@ -43,7 +43,7 @@ migration needs a real database and is made outside the harness.
 | Version | What |
 | --- | --- |
 | 0.10.0 | `10-posts-feed-api.md`: model fixes, pagination helper, one-query feed (no N+1), `GET /api/posts` |
-| 0.11.0 | The `/community` feed page with "load more" |
+| 0.11.0 | `11-community-feed.md`: the `/community` feed page with "load more" |
 | 0.12.0 | Create, edit and delete your own posts and comments |
 | 0.13.0 | Moderator and admin tools: edit or remove any post or comment |
 
