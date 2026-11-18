@@ -1,9 +1,14 @@
 ---
+// Layout
 import PublicLayout from "@/layouts/PublicLayout.astro";
+
+// Components
+import CommunityFeed from "@/components/feed/CommunityFeed";
+
+// Library
 import { listPosts } from "@/lib/db/posts";
 import { DEFAULT_LIMIT, nextOffset } from "@/lib/posts/pagination";
 import type { FeedPost } from "@/lib/posts/types";
-import CommunityFeed from "@/components/feed/CommunityFeed";
 
 let posts: FeedPost[] = [];
 try {
