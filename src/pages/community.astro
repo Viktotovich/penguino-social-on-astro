@@ -1,0 +1,24 @@
+---
+import { listPosts } from "@/lib/db/posts";
+import { DEFAULT_LIMIT, nextOffset } from "@/lib/posts/pagination";
+import type { FeedPost } from "@/lib/posts/types";
+import CommunityFeed from "@/components/feed/CommunityFeed";
+import PublicLayout from "@/layouts/PublicLayout.astro";
+
+let posts: FeedPost[] = [];
+try {
+  const rows = await listPosts({ offset: 0, limit: DEFAULT_LIMIT });
+  posts = rows.map((row) => ({ ...row, createdAt: row.createdAt.toISOString() }));
+} catch {
+  posts = [];
+}
+const next = nextOffset(0, DEFAULT_LIMIT, posts.length);
+---
+
+<PublicLayout>
+  <main>
+    <h1 class="font-display text-3xl font-extrabold text-ink sm:text-4xl">Community</h1>
+    <p class="max-w-[65ch] text-muted-foreground">Questions, advice and partnerships from the Penguino community.</p>
+    <CommunityFeed client:load initialPosts={posts} initialNextOffset={next} />
+  </main>
+</PublicLayout>
